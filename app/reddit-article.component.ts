@@ -3,6 +3,7 @@ import { Article } from './reddit-article';
 
 @Component({
   selector: 'reddit-article',
+  inputs: ['article'],
   host: {
     class: 'row'
   },
@@ -21,6 +22,7 @@ import { Article } from './reddit-article';
       <a href="{{ article.link }}" class="ui large header">
         {{ article.title }}
       </a>
+      <div class="meta">({{ article.domain() }})</div>
       <ul class="ui big horizontal list voters">
         <li class="item">
           <a href="" (click)="voteUp()">
@@ -41,17 +43,13 @@ import { Article } from './reddit-article';
 export class ArticleComponent {
   article: Article;
 
-  constructor() {
-    this.article = new Article('Ankwlar 2', 'http://angular.io', 666);
-  }
-
   voteUp(): boolean {
-    this.article.votes += 1;
+    this.article.voteUp();
     return false;
   }
 
   voteDown(): boolean {
-    this.article.votes -= 1;
+    this.article.voteDown();
     return false;
   }
 }
