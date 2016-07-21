@@ -1,4 +1,4 @@
 import { bootstrap }    from '@angular/platform-browser-dynamic';
-import { AppComponent } from './app.component';
+import { RedditApp } from './reddit.component';
 
-bootstrap(AppComponent);
+bootstrap(RedditApp);
